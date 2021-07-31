@@ -1,5 +1,5 @@
 ### Installation
-`composer req test789434/gg`
+`composer req test789434/golden-goose`
 
 #### Laravel without auto-discovery:
 If you don't use auto-discovery, add the ServiceProvider to the providers array in config/app.php

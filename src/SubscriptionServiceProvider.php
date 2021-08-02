@@ -24,10 +24,10 @@ class SubscriptionServiceProvider extends ServiceProvider
                 $this->publishes(
                     [
                         self::PATH_MIGRATIONS . 'create_subscriptions_table.php.stub' => $this->createMigrationName(
-                            'create_subscriptions_table'
+                            'create_subscriptions_table', 1
                         ),
                         self::PATH_MIGRATIONS . 'create_subscription_user_table.php.stub' => $this->createMigrationName(
-                            'create_subscription_user_table'
+                            'create_subscription_user_table', 2
                         )
                     ],
                     'migrations'
@@ -48,10 +48,10 @@ class SubscriptionServiceProvider extends ServiceProvider
         $this->app->bind(SubscriptionServiceInterface::class, SubscriptionService::class);
     }
 
-    private function createMigrationName(string $name): string
+    private function createMigrationName(string $name, int $order): string
     {
         return database_path(
-            'migrations/' . date('Y_m_d_His', time()) . "_$name.php"
+            'migrations/' . date('Y_m_d_His', time() + $order) . "_$name.php"
         );
     }
 }

@@ -23,7 +23,7 @@ class SubscriptionsWasUpdated
     /**
      * @var Collection<Subscription>|null
      */
-    private $oldSubscriptions;
+    public $oldSubscriptions;
 
     public function __construct(Authenticatable $user, $oldSubscriptions)
     {

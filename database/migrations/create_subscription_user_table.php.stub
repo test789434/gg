@@ -11,8 +11,11 @@ class CreateSubscriptionUserTable extends Migration
     public function up(): void
     {
         Schema::create('subscription_user', function (Blueprint $table) {
-            $table->integer('subscription_id')->index();
-            $table->integer('user_id')->index();
+            $table->unsignedBigInteger('subscription_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('subscription_id')->references('id')->on('subscriptions');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unique(['subscription_id', 'user_id']);
         });
     }
 
